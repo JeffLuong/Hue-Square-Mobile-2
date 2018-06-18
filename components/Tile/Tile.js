@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { TouchableOpacity, } from 'react-native'
+import { TouchableOpacity, LayoutAnimation } from 'react-native';
+import PropTypes from 'prop-types';
 
 class Tile extends Component {
 
@@ -13,7 +13,7 @@ class Tile extends Component {
       backgroundColor: PropTypes.string.isRequired,
       width: PropTypes.number.isRequired,
       height: PropTypes.number.isRequired,
-    })
+    }).isRequired
   }
 
   getDerivedStateFromProps() {

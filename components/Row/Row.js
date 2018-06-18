@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import Tile from '../../components/Tile/index';
+import Tile, { createTileComponent } from '../../components/Tile/index';
 import { generateTileStyles } from '../../components/Tile/styles';
+import PropTypes from 'prop-types';
+
+function generateRowOfTiles(tiles) {
+  return tiles.map((tile, idx) => createTileComponent(tile, idx));
+}
 
 class Row extends Component {
 
@@ -9,15 +14,19 @@ class Row extends Component {
     super(props);
   }
 
+  static propTypes = {
+    tiles: PropTypes.array.isRequired
+  }
+
   render() {
+    const rowOfTiles = generateRowOfTiles(this.props.tiles);
+
     return (
       <View>
-        <Tile tileStyles={generateTileStyles()}></Tile>
-        <Tile tileStyles={generateTileStyles()}></Tile>
-        <Tile tileStyles={generateTileStyles()}></Tile>
+        {rowOfTiles}
       </View>
-    )
+    );
   }
-};
+}
 
 export default Row;
